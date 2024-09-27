@@ -126,6 +126,12 @@ namespace AryPlayground
             return elements;
         }
 
+        [Production("listElements: value COMMA")]
+        public JSon ListElementsOneWithComma(JSon element, Token<JsonToken> comma)
+        {
+            return new JList(element);
+        }
+        
         [Production("listElements: value")]
         public JSon ListElementsOne(JSon element)
         {
