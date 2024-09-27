@@ -15,7 +15,8 @@ var parser = builder.BuildParser(jsonParser, ParserType.LL_RECURSIVE_DESCENT, "r
 var source = @"{
     'one': 1,
     'str': 'hello',
-    'list': [1, 2, 3,]
+    'list': [1, 2, 3,],
+    'x': 1,
 }".Replace("'", "\"");
 var r = parser.Parse(source);
 
