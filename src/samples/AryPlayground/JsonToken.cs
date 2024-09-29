@@ -17,5 +17,6 @@ namespace AryPlayground
         [Lexeme("[ \\t]+", true)] WS = 12,
         [Lexeme("[\\n\\r]+", true, true)] EOL = 13,
         [Lexeme("(null)")] NULL = 14
+        
     }
 }

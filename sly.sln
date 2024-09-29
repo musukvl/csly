@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTemplate", "src/sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AryPlayground", "src\samples\AryPlayground\AryPlayground.csproj", "{8B1E3CEB-C803-4225-BF03-247425EE8F09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AryKvLanguage", "src\samples\AryKvLanguage\AryKvLanguage.csproj", "{A173E989-4004-4732-A823-B95A422A1A14}"
+EndProject
 Global
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
@@ -126,6 +128,10 @@ Global
 		{8B1E3CEB-C803-4225-BF03-247425EE8F09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B1E3CEB-C803-4225-BF03-247425EE8F09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B1E3CEB-C803-4225-BF03-247425EE8F09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A173E989-4004-4732-A823-B95A422A1A14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A173E989-4004-4732-A823-B95A422A1A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A173E989-4004-4732-A823-B95A422A1A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A173E989-4004-4732-A823-B95A422A1A14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +149,7 @@ Global
 		{81E72CFA-A6D6-4DB4-B3B5-E167064E7858} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
 		{BC5020CA-6BFC-4895-9A1E-99B4A0AEDB11} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
 		{8B1E3CEB-C803-4225-BF03-247425EE8F09} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
+		{A173E989-4004-4732-A823-B95A422A1A14} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43254130-CF3E-480E-952F-E50CA5D2E417}

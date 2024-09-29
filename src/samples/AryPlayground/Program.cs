@@ -9,7 +9,8 @@ using JsonToken = AryPlayground.JsonToken;
 
 var jsonParser = new JSONParser();
 var builder = new ParserBuilder<JsonToken, JSon>();
-var parser = builder.BuildParser(jsonParser, ParserType.LL_RECURSIVE_DESCENT, "root").Result;
+
+var parser = builder.BuildParser(jsonParser, ParserType.EBNF_LL_RECURSIVE_DESCENT, "root").Result;
 
 
 var source = @"{

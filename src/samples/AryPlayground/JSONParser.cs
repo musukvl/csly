@@ -158,8 +158,8 @@ namespace AryPlayground
             return members;
         }
 
-        [Production("members : property COMMA")]
-        public JSon SingleMemberWithComma(JObject pair, Token<JsonToken> comma)
+        [Production("members : property COMMA [d]")]
+        public JSon SingleMemberWithComma(JObject pair)
         {
             return SingleMember(pair);
         }
