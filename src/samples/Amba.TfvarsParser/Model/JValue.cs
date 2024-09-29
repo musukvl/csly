@@ -23,5 +23,23 @@
         {
             return (T) value;
         }
+        
+        public override string ToString()
+        {
+            switch (value)
+            {
+                case string s:
+                    return $"\"{s}\"";
+                case int i:
+                    return i.ToString();
+                case double d:
+                    return d.ToString();
+                case bool b:
+                    return b.ToString().ToLower();
+                default:
+                    return "null";
+                
+            } 
+        }
     }
 }

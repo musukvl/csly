@@ -22,7 +22,9 @@
 
         public override bool IsList => true;
 
-        private Dictionary<string, JSon> Values { get; }
+        public Dictionary<string, JSon> Values { get; }
+        
+        
 
         public int Count => Values.Count;
 
@@ -37,6 +39,7 @@
         {
             foreach (var pair in obj.Values) this[pair.Key] = pair.Value;
         }
+        
 
         public bool ContainsKey(string key)
         {

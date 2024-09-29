@@ -1,4 +1,5 @@
-﻿using Amba.TfvarsParser;
+﻿using System.Text;
+using Amba.TfvarsParser;
 using Amba.TfvarsParser.Model;
 using Newtonsoft.Json;
 using sly.lexer;
@@ -60,4 +61,7 @@ var isError = r.IsError; // true
 var root = r.Result; // null;
 
 Console.WriteLine("IsError: " + isError);
-Console.WriteLine("Root: " + JsonConvert.SerializeObject(r, Formatting.Indented));
+//Console.WriteLine("Root: " + JsonConvert.SerializeObject(r, Formatting.Indented));
+
+ 
+Console.WriteLine(ParseUtils.Traverse(r.Result).ToString());
