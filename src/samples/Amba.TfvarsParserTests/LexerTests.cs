@@ -48,7 +48,7 @@ public class LexerTests
         var result = lexer.Tokenize(@"key_1 = 42
             key2 = ""value""");
         Assert.False(result.IsError);
-        Assert.Equal("IDENTIFIER EQ INT EOL IDENTIFIER EQ STRING EOF", GetTokensString(result.Tokens));
+        Assert.Equal("IDENTIFIER EQ INT IDENTIFIER EQ STRING EOF", GetTokensString(result.Tokens));
     }
     
     [Fact]

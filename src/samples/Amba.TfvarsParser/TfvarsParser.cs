@@ -27,8 +27,8 @@ public class TfvarsParser
     }
 
 
-    [Production("listElements: value COMMA EOL* listElements")]
-    public JSon ListElementsMany(JSon value, Token<TfvarsToken> comma, List<Token<TfvarsToken>> eol, JList tail)
+    [Production("listElements: value COMMA listElements")]
+    public JSon ListElementsMany(JSon value, Token<TfvarsToken> comma, JList tail)
     {
         var elements = new JList(value);
         elements.AddRange(tail);
@@ -68,8 +68,8 @@ public class TfvarsParser
  
     #region Members
     
-    [Production("members : property EOL members")]
-    public JSon ManyMembers(JObject pair, Token<TfvarsToken> comma, JObject tail)
+    [Production("members : property members")]
+    public JSon ManyMembers(JObject pair,  JObject tail)
     {
         var members = new JObject();
         members.Merge(pair);
@@ -78,8 +78,8 @@ public class TfvarsParser
     }
      
     
-    [Production("members : property EOL")]
-    public JSon SingleMember(JObject pair, Token<TfvarsToken> comma)
+    [Production("members : property ")]
+    public JSon SingleMember(JObject pair)
     {
         var members = new JObject();
         members.Merge(pair);
