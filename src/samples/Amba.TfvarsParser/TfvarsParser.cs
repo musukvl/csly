@@ -1,10 +1,10 @@
-﻿using AryKvLanguage.Model;
+﻿using Amba.TfvarsParser.Model;
 using sly.lexer;
 using sly.parser.generator;
 
-namespace AryKvLanguage;
+namespace Amba.TfvarsParser;
 
-public class KvParser
+public class TfvarsParser
 {
     [Production("root : members")]
     public JSon Root(JSon value)
@@ -12,20 +12,20 @@ public class KvParser
         return value;
     }
     
-    [Production("property: IDENTIFIER EQUALS value")]
-    public JSon PropertyIdentifier(Token<KvToken> key, Token<KvToken> colon, JSon value)
+    [Production("property: IDENTIFIER EQ value")]
+    public JSon PropertyIdentifier(Token<TfvarsToken> key, Token<TfvarsToken> colon, JSon value)
     {
         return new JObject(key.StringWithoutQuotes, value);
     }
 
-    [Production("property: STRING EQUALS value")]
-    public JSon PropertyString(Token<KvToken> key, Token<KvToken> colon, JSon value)
+    [Production("property: STRING EQ value")]
+    public JSon PropertyString(Token<TfvarsToken> key, Token<TfvarsToken> colon, JSon value)
     {
         return new JObject(key.StringWithoutQuotes, value);
     }
 
     [Production("members : property EOL members")]
-    public JSon ManyMembers(JObject pair, Token<KvToken> comma, JObject tail)
+    public JSon ManyMembers(JObject pair, Token<TfvarsToken> comma, JObject tail)
     {
         var members = new JObject();
         members.Merge(pair);
@@ -35,7 +35,7 @@ public class KvParser
      
     
     [Production("members : property EOL")]
-    public JSon SingleMember(JObject pair, Token<KvToken> comma)
+    public JSon SingleMember(JObject pair, Token<TfvarsToken> comma)
     {
         var members = new JObject();
         members.Merge(pair);
@@ -52,13 +52,13 @@ public class KvParser
 
     
     [Production("value : STRING")]
-    public JSon StringValue(Token<KvToken> stringToken)
+    public JSon StringValue(Token<TfvarsToken> stringToken)
     {
         return new JValue(stringToken.StringWithoutQuotes);
     }
 
     [Production("value : INT")]
-    public JSon IntValue(Token<KvToken> intToken)
+    public JSon IntValue(Token<TfvarsToken> intToken)
     {
         return new JValue(intToken.IntValue);
     }

@@ -1,4 +1,4 @@
-﻿namespace AryKvLanguage.Model
+﻿namespace Amba.TfvarsParser.Model
 {
     public abstract class JSon
     {

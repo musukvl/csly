@@ -1,14 +1,14 @@
-﻿using AryKvLanguage;
-using AryKvLanguage.Model;
+﻿using Amba.TfvarsParser;
+using Amba.TfvarsParser.Model;
 using Newtonsoft.Json;
 using sly.lexer;
 using sly.parser.generator;
 
-var kvParser = new KvParser();
-var builder = new ParserBuilder<KvToken, JSon>();
+var kvParser = new TfvarsParser();
+var builder = new ParserBuilder<TfvarsToken, JSon>();
 
 // try lexer
-var lexbuild = LexerBuilder.BuildLexer<KvToken>();
+var lexbuild = LexerBuilder.BuildLexer<TfvarsToken>();
 if (lexbuild.IsError)
 {
     foreach (var error in lexbuild.Errors)

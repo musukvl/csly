@@ -41,7 +41,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTemplate", "src/sampl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AryPlayground", "src\samples\AryPlayground\AryPlayground.csproj", "{8B1E3CEB-C803-4225-BF03-247425EE8F09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AryKvLanguage", "src\samples\AryKvLanguage\AryKvLanguage.csproj", "{A173E989-4004-4732-A823-B95A422A1A14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amba.TfvarsParser", "src\samples\Amba.TfvarsParser\Amba.TfvarsParser.csproj", "{A173E989-4004-4732-A823-B95A422A1A14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amba.TfvarsParserTests", "src\samples\Amba.TfvarsParserTests\Amba.TfvarsParserTests.csproj", "{B0ED02DF-A717-481A-96CD-9158664D3281}"
 EndProject
 Global
 	GlobalSection(Performance) = preSolution
@@ -132,6 +134,10 @@ Global
 		{A173E989-4004-4732-A823-B95A422A1A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A173E989-4004-4732-A823-B95A422A1A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A173E989-4004-4732-A823-B95A422A1A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0ED02DF-A717-481A-96CD-9158664D3281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0ED02DF-A717-481A-96CD-9158664D3281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0ED02DF-A717-481A-96CD-9158664D3281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0ED02DF-A717-481A-96CD-9158664D3281}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,6 +156,7 @@ Global
 		{BC5020CA-6BFC-4895-9A1E-99B4A0AEDB11} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
 		{8B1E3CEB-C803-4225-BF03-247425EE8F09} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
 		{A173E989-4004-4732-A823-B95A422A1A14} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
+		{B0ED02DF-A717-481A-96CD-9158664D3281} = {36ED7F1A-2E81-4A71-81FE-A357E5840A33}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {43254130-CF3E-480E-952F-E50CA5D2E417}
