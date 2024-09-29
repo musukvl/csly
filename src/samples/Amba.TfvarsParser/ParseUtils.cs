@@ -25,15 +25,12 @@ public static class ParseUtils
         }
         else if (json.IsList)
         {
-            sb.Append("[\n");
+            sb.Append("[");
             foreach (var item in ((JList) json).Items)
             {
-                sb.Append(new string(' ', level * 4));
                 Traverse(item, sb, level + 1);
-                sb.Append(",\n");
-            }
-
-            sb.Append(new string(' ', (level - 1) * 4));
+                sb.Append(", ");
+            } 
             sb.Append("]");
         }
         else if (json.IsValue)
