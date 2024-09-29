@@ -22,7 +22,7 @@ public class ParserTests
     }
     
     [Fact]
-    public void Test1()
+    public void SimpleCase()
     {
         
         var parser = BuildParser();
@@ -34,13 +34,16 @@ public class ParserTests
         Assert.Equal("{\n    a = 1,\n}", json.ToString());
     }
     
-    [Fact]
-    public void Common()
+    [Theory]
+    [InlineData("./data/common.tfvars", "./data/common.result")]
+    [InlineData("./data/inner_object.tfvars", "./data/inner_object.result")]
+    [InlineData("./data/simple_values.tfvars", "./data/simple_values.result")]
+    public void FileTest(string inputFile, string outputFile)
     {
         
         var parser = BuildParser();
-        var source = File.ReadAllText("./data/common.tfvars");
-        var expected = File.ReadAllText("./data/common.result").Replace("\r\n", "\n");
+        var source = File.ReadAllText(inputFile);
+        var expected = File.ReadAllText(outputFile).Replace("\r\n", "\n");
         
         var result = parser.Parse(source);
         Assert.False(result.IsError, result?.Errors?.Aggregate("", (acc, x) => acc + x.ErrorMessage + Environment.NewLine));

@@ -61,6 +61,7 @@ var isError = r.IsError; // true
 var root = r.Result; // null;
 
 Console.WriteLine("IsError: " + isError);
+Console.WriteLine(r.Errors?.Aggregate("", (acc, x) => acc + x.ErrorMessage + Environment.NewLine));
 //Console.WriteLine("Root: " + JsonConvert.SerializeObject(r, Formatting.Indented));
 
  

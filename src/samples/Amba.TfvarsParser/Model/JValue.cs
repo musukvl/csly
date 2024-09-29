@@ -36,8 +36,10 @@
                     return d.ToString();
                 case bool b:
                     return b.ToString().ToLower();
+                case Decimal d:
+                    return d.ToString();
                 default:
-                    return "null";
+                    return "unknown";
                 
             } 
         }

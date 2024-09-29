@@ -5,9 +5,13 @@ namespace Amba.TfvarsParser;
 
 public static class ParseUtils
 {
-    public static StringBuilder Traverse(JSon json, StringBuilder? sb = null, int level = 1)
+    public static StringBuilder Traverse(JSon? json, StringBuilder? sb = null, int level = 1)
     {
         sb ??= new StringBuilder();
+        if (json == null)
+        {
+            return sb;
+        }
         if (json.IsObject)
         {
             sb.Append("{\n");
@@ -36,6 +40,10 @@ public static class ParseUtils
         else if (json.IsValue)
         {
             sb.Append(((JValue)json).ToString());
+        }
+        else if (json.IsNull)
+        {
+            sb.Append("null");
         }
 
         return sb;

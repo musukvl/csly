@@ -1,4 +1,5 @@
-﻿using Amba.TfvarsParser.Model;
+﻿using System.Globalization;
+using Amba.TfvarsParser.Model;
 using sly.lexer;
 using sly.parser.generator;
 
@@ -14,41 +15,49 @@ public class TfvarsParser
 
     #region LIST
 
-    [Production("list: LBRACKET RBRACKET")]
-    public JSon EmptyList(Token<TfvarsToken> crog, Token<TfvarsToken> crod)
+    [Production("list: LBRACKET[d] RBRACKET[d]")]
+    public JSon EmptyList()
     {
         return new JList();
     }
 
-    [Production("list: LBRACKET listElements RBRACKET")]
-    public JSon List(Token<TfvarsToken> crog, JList elements, Token<TfvarsToken> crod)
+    [Production("list: LBRACKET[d] listElements RBRACKET[d]")]
+    public JSon List(JList elements)
     {
         return elements;
     }
 
-
-    [Production("listElements: value COMMA listElements")]
-    public JSon ListElementsMany(JSon value, Token<TfvarsToken> comma, JList tail)
+    [Production("listElements: value COMMA[d] listElements")]
+    public JSon ListElementsMany(JSon value, JList tail)
     {
         var elements = new JList(value);
         elements.AddRange(tail);
         return elements;
     }
 
-    [Production("listElements: value COMMA")]
-    public JSon ListElementsOneWithComma(JSon element, Token<TfvarsToken> comma)
+    [Production("listElements: value COMMA*")]
+    public JSon ListElementsOneWithComma(JSon element, List<Token<TfvarsToken>> comma)
     {
         return new JList(element);
     }
-        
-    [Production("listElements: value")]
-    public JSon ListElementsOne(JSon element)
+    #endregion
+    
+    #region OBJECT
+
+    [Production("object: LBRACE[d] RBRACE[d]")]
+    public JSon EmptyObjectValue()
     {
-        return new JList(element);
+        return new JObject();
+    }
+
+    [Production("object: LBRACE[d] members RBRACE[d]")]
+    public JSon AttributesObjectValue(JObject members)
+    {
+        return members;
     }
 
     #endregion
-    
+
     
     #region property
     
@@ -67,27 +76,17 @@ public class TfvarsParser
     #endregion
  
     #region Members
-    
-    [Production("members : property members")]
-    public JSon ManyMembers(JObject pair,  JObject tail)
+    [Production("members : property COMMA* members")]
+    public JSon ManyMembers1(JObject pair, List<Token<TfvarsToken>> comm,  JObject tail)
     {
         var members = new JObject();
         members.Merge(pair);
         members.Merge(tail);
         return members;
     }
-     
     
-    [Production("members : property ")]
-    public JSon SingleMember(JObject pair)
-    {
-        var members = new JObject();
-        members.Merge(pair);
-        return members;
-    }
-    
-    [Production("members : property")]
-    public JSon SingleMember1(JObject pair)
+    [Production("members : property COMMA*")]
+    public JSon SingleMember(JObject pair, List<Token<TfvarsToken>> comma)
     {
         var members = new JObject();
         members.Merge(pair);
@@ -112,6 +111,35 @@ public class TfvarsParser
     public JSon IntValue(Token<TfvarsToken> intToken)
     {
         return new JValue(intToken.IntValue);
+    }
+    
+    [Production("value : object")]
+    public JSon ObjectValue(JSon value)
+    {
+        return value;
+    }
+    
+    [Production("value : BOOLEAN")]
+    public JSon BooleanValue(Token<TfvarsToken> boolToken)
+    {
+        return new JValue(bool.Parse(boolToken.Value));
+    }
+
+    [Production("value : NULL")]
+    public JSon NullValue(Token<TfvarsToken> forget)
+    {
+        return new JNull();
+    }
+    
+    [Production("value : DECIMAL")]
+    public JSon DoubleValue(Token<TfvarsToken> decimalToken)
+    {
+        if (Decimal.TryParse(decimalToken.Value, NumberStyles.Number, CultureInfo.InvariantCulture, out var value))
+        {
+            return new JValue(value);
+        }
+        
+        return new JValue(0);
     }
     #endregion
 }
