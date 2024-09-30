@@ -26,22 +26,15 @@
         
         public override string ToString()
         {
-            switch (value)
+            return value switch
             {
-                case string s:
-                    return $"\"{s}\"";
-                case int i:
-                    return i.ToString();
-                case double d:
-                    return d.ToString();
-                case bool b:
-                    return b.ToString().ToLower();
-                case Decimal d:
-                    return d.ToString();
-                default:
-                    return "unknown";
-                
-            } 
+                string s => $"\"{s}\"",
+                int i => i.ToString(),
+                double d => d.ToString(),
+                bool b => b.ToString().ToLower(),
+                Decimal d => d.ToString(),
+                _ => "unknown"
+            };
         }
     }
 }

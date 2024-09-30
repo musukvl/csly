@@ -1,6 +1,5 @@
 ﻿using Amba.TfvarsParser;
 using Amba.TfvarsParser.Model;
-using sly.lexer;
 using sly.parser;
 using sly.parser.generator;
 
@@ -17,14 +16,12 @@ public class ParserTests
         {
             throw new Exception(string.Join(Environment.NewLine, parserBuildResult.Errors.Select(x => x.Message)));
         }
-
         return parserBuildResult.Result;
     }
     
     [Fact]
     public void SimpleCase()
     {
-        
         var parser = BuildParser();
         var source = "a = 1";
         
@@ -40,7 +37,6 @@ public class ParserTests
     [InlineData("./data/simple_values.tfvars", "./data/simple_values.result")]
     public void FileTest(string inputFile, string outputFile)
     {
-        
         var parser = BuildParser();
         var source = File.ReadAllText(inputFile);
         var expected = File.ReadAllText(outputFile).Replace("\r\n", "\n");

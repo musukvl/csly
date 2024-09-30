@@ -25,5 +25,6 @@ public enum TfvarsToken
     [Lexeme(GenericToken.SugarToken, "{")] LBRACE,
     [Lexeme(GenericToken.SugarToken, "}")] RBRACE,
     [Lexeme(GenericToken.SugarToken, ",")] COMMA,
-    [Lexeme(GenericToken.KeyWord, "null")] NULL 
+    [Lexeme(GenericToken.KeyWord, "null")] NULL,
+    [Lexeme(GenericToken.Comment, "//", "/*", "*/", IsSkippable = true)] COMMENT
 }

@@ -1,7 +1,8 @@
-﻿namespace Amba.TfvarsParser.Model
-{
-    public class JList : JSon
+﻿using System.Collections;
 
+namespace Amba.TfvarsParser.Model
+{
+    public class JList : JSon, IReadOnlyList<JSon>
     {
         public JList()
         {
@@ -12,8 +13,7 @@
         {
             Items = lst;
         }
-
-
+        
         public JList(JSon item)
         {
             Items = new List<JSon>();
@@ -45,6 +45,16 @@
         public void AddRange(List<JSon> items)
         {
             Items.AddRange(items);
+        }
+
+        public IEnumerator<JSon> GetEnumerator()
+        {
+            return Items.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Items.GetEnumerator();
         }
     }
 }

@@ -12,10 +12,10 @@ public static class ParseUtils
         {
             return sb;
         }
-        if (json.IsObject)
+        if (json is JObject jObject) 
         {
             sb.Append("{\n");
-            foreach (var pair in ((JObject) json).Values)
+            foreach (var pair in jObject.Values)
             {
                 sb.Append(new string(' ', level * 4));
                 sb.Append(pair.Key);
@@ -27,21 +27,21 @@ public static class ParseUtils
             sb.Append(new string(' ', (level - 1) * 4));
             sb.Append("}");
         }
-        else if (json.IsList)
+        else if (json is JList list)
         {
             sb.Append("[");
-            foreach (var item in ((JList) json).Items)
+            foreach (var item in list.Items)
             {
                 Traverse(item, sb, level + 1);
                 sb.Append(", ");
             } 
             sb.Append("]");
         }
-        else if (json.IsValue)
+        else if (json is JValue value)
         {
-            sb.Append(((JValue)json).ToString());
+            sb.Append(value.ToString());
         }
-        else if (json.IsNull)
+        else if (json is JNull)
         {
             sb.Append("null");
         }
